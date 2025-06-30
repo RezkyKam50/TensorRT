@@ -20,6 +20,10 @@ if((${TRT_BUILD_SAMPLES} OR ${TRT_BUILD_TRTEXEC}) AND NOT ${TRT_BUILD_ONNX_PARSE
     message(FATAL_ERROR "Building trtexec and/or the other samples requires that TRT_BUILD_ONNX_PARSER=ON")
 endif()
 
+if((TRT_BUILD_SAMPLES OR TRT_BUILD_TRTEXEC) AND NOT TRT_BUILD_ONNX_PARSER)
+    message(FATAL_ERROR "Building trtexec and/or the other samples requires that TRT_BUILD_ONNX_PARSER=ON")
+endif()
+
 if(${TRT_BUILD_ENABLE_NEW_SAMPLES_FLOW})
 
 # OSS samples need the ONNX parser path to be included when each sample is built
